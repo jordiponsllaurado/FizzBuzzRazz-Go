@@ -1,6 +1,12 @@
-package fizzbuzz
+package main
 
-import "strconv"
+import (
+  "strconv"
+  "fmt"
+  "os"
+  "bufio"
+  "strings"
+  )
 
 
 func serial_transformer(dictionary map[int]string, number int) string {
@@ -26,4 +32,17 @@ func fizzbuzz(number int) string {
     return strconv.Itoa(number)
   }
   return result
+}
+
+func main() {
+  reader := bufio.NewReader(os.Stdin)
+  fmt.Printf("Write a number\n")
+  text, _ := reader.ReadString('\n')
+  i, err := strconv.Atoi(strings.TrimSpace(text))
+  if err != nil {
+    fmt.Println("This is not a number!", err)
+  } else {
+    fizzBuzzValue := fizzbuzz(i)
+    fmt.Println(fizzBuzzValue)
+  }
 }
