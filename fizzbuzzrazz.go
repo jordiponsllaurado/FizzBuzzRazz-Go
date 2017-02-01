@@ -4,7 +4,7 @@ import "strconv"
 
 
 func serial_transformer(dictionary map[int]string, number int) string {
-  result := ""
+  var result string
 
   for k, v := range dictionary {
     if number % k == 0 {
@@ -15,11 +15,11 @@ func serial_transformer(dictionary map[int]string, number int) string {
 }
 
 func fizzbuzz(number int) string {
-  dictionary := make(map[int]string)
-  dictionary[3] = "Fizz"
-  dictionary[5] = "Buzz"
-  dictionary[7] = "Razz"
-
+  dictionary := map[int]string {
+    3: "Fizz",
+    5: "Buzz",
+    7: "Razz",
+  }
   result := serial_transformer(dictionary, number)
 
   if result == "" {
