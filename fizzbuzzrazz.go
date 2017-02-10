@@ -6,17 +6,25 @@ import (
   "os"
   "bufio"
   "strings"
+  "sort"
   )
 
 
 func serial_transformer(dictionary map[int]string, number int) string {
   var result string
 
-  for k, v := range dictionary {
-    if number % k == 0 {
-      result += v
-    }
+  var keys []int
+  for k := range dictionary {
+      keys = append(keys, k)
   }
+  sort.Ints(keys)
+
+  for _, k := range keys {
+      if number % k == 0 {
+        result += dictionary[k]
+      }
+  }
+
   return result
 }
 
